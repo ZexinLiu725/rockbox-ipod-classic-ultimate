@@ -104,28 +104,54 @@ own noise floor — audibly identical to a native 48 download, and stutter-free.
 - ReplayGain 缺 peak 元数据时正增益压静音的坑已填
 - 播放恢复：不可解码曲目有界跳过、I/O 错误有界重试、失败原因区分、故障后 Play 重试
 
-## 安装 / Install
+## 安装（新手版，一步一步来）/ Install (beginner-friendly, step by step)
 
-**先备份，后动手。备份没验完，不要写设备。**
-**Back up first. No verified backup, no install.**
+**不难，就三件事：先备份、再合并、最后核对。整个过程不用刷机、不动引导，装坏了也能退回去。**
+**It's just: back up, merge, verify. No flashing, bootloader untouched, fully reversible.**
 
-1. 备份 iPod 上整个 `.rockbox` 文件夹到电脑，并确认备份完整。
-   Back up the entire `.rockbox` folder from your iPod and verify it.
-2. 解压发布包，确认顶层只有 `.rockbox/`。
-   Unzip the release; the only top-level folder must be `.rockbox/`.
-3. 以「合并」方式把 `.rockbox` 拷入 iPod 根目录，**不要整目录替换**；
-   保留你自己的 `config.cfg`（本包不含它）。
-   Merge — never replace — into the iPod root. Keep your own `config.cfg` (not included).
-4. 主程序 `rockbox.ipod` 与 44 个 codec 必须成套更新，不要混搭其他版本。
-   The main binary and all 44 codecs ship as a set. Never mix versions.
-5. 安全弹出、重启，确认 Rockbox Info 显示 `66f3075f9eM-261105`。
-   Eject safely, reboot, confirm version `66f3075f9eM-261105` in Rockbox Info.
+开始前你需要：一台电脑（Mac 或 Windows 都行）、一根数据线、已经装好 Rockbox 的 iPod Classic 6G。
+You need: a computer, a USB cable, and an iPod Classic 6G already running Rockbox.
 
-注意：包内含默认主题配置、两个默认字体与插件配置，同名文件合并前先比对。
-Note: bundled default theme/font/plugin configs may share names with yours — diff before merging.
+**第 1 步：备份（最重要，别跳过）**
+把 iPod 插上电脑，它会像 U 盘一样出现。把里面的 `.rockbox` 文件夹**整个复制**到电脑上存好（这是个隐藏文件夹：Mac 在访达里按 Cmd+Shift+. 显示它，Windows 在资源管理器里勾「隐藏的项目」）。这个备份就是你的后悔药。
+Plug in the iPod (it mounts like a USB drive) and copy the whole hidden `.rockbox` folder to your computer. This backup is your undo button. (Mac: Cmd+Shift+. in Finder to show hidden files. Windows: tick "Hidden items".)
 
-回退：从第 1 步的备份成套恢复整个原 `.rockbox` 即可，引导程序未动。
-Rollback: restore the whole original `.rockbox` from your backup. The bootloader is untouched.
+**第 2 步：解压下载的包**
+解压 Release 里的 `rockbox-ipod6g-A2-ALAC-B.zip`，里面只有一个 `.rockbox` 文件夹，对了。
+Unzip the release ZIP. Inside is a single `.rockbox` folder.
+
+**第 3 步：合并，别替换**
+把解压出的 `.rockbox` 拖到 iPod 的根目录（就是能看到 Music 文件夹的那一层）。系统会问你怎么办——**选「合并 / Merge」**，千万别选「替换 / Replace」。放心：安装包里没有你的个人设置文件，你的主题、歌单、设置都不会丢。
+Drag the unzipped `.rockbox` onto the iPod's root (where Music lives) and choose **Merge** — never Replace. Your personal config isn't in the package, so your themes and settings stay.
+
+**第 4 步：弹出、开机、核对**
+安全弹出 iPod，拔线开机。进 设置 → Rockbox Info，看到版本号 `66f3075f9eM-261105` 就是装好了。随便放一首 44.1/48 kHz 的歌，能播、能暂停、能拉进度，齐活。
+Eject safely, unplug, boot. Settings → Rockbox Info should show `66f3075f9eM-261105`. Play any 44.1/48 kHz song to confirm.
+
+**想退回去？** 把第 1 步备份的 `.rockbox` 再拖回来合并一次，就回到原来的系统。
+**Rollback:** merge your backup `.rockbox` back the same way. Done.
+
+**喂歌记住一条：导入的歌最高 48 kHz**（原因见上面那一节）。已经装好 Rockbox 官方版的朋友同样适用本流程；还没装过 Rockbox 的朋友，请先按 Rockbox 官方手册装好引导，再回来用这个包。
+**One feeding rule: keep songs at 48 kHz or below** (see the section above). New to Rockbox entirely? Install the official bootloader first, then come back.
+
+### 懒人通道：让 Codex 帮你装 / Too lazy? Let Codex do it
+
+不想自己动手？把下面这段话原样发给 Codex（或任何能操作你电脑的 AI 编程助手），它会带着你一步步装完——该备份的备份、该核对的核对，出错会停下来问你，不会乱来。
+Send this prompt to Codex (or any AI agent that can operate your computer) and it will walk the install safely:
+
+```text
+请帮我把一个 Rockbox 定制固件包装到我的 iPod Classic 6G 上，严格按下面做：
+1. 固件包在 GitHub 仓库 liuzexin725-maker/rockbox-ipod-classic-ultimate 的 Release v261105-ultimate 里，文件名 rockbox-ipod6g-A2-ALAC-B.zip，先下载并解压，确认里面只有一个 .rockbox 文件夹、大小 9,258,598 字节。
+2. 把 iPod 插上电脑，先把 iPod 里现有的整个 .rockbox 文件夹完整复制一份到电脑上做备份，并打开备份确认 rockbox.ipod 和 codecs 都在；备份没确认好之前，不要往 iPod 写任何东西。
+3. 把解压出的 .rockbox 以「合并」方式拷到 iPod 根目录，绝对不要整目录替换；如果遇到同名文件，默认保留我设备上的个人设置文件 config.cfg（安装包本来就不含它）。
+4. 拷完逐项核对：.rockbox/rockbox.ipod 应为 1,218,340 字节，.rockbox/codecs 里应有 44 个 .codec 文件。
+5. 安全弹出后让我拔线开机，进 Rockbox Info 确认版本是 66f3075f9eM-261105。
+6. 任何一步对不上立刻停下来告诉我，不要自行尝试修复，更不要动引导程序（bootloader）。
+装好之后提醒我：导入这台 iPod 的歌曲采样率最高只到 48 kHz，96/192 的歌先在电脑上转成 48 再导入，不然会卡。
+```
+
+*English version of the prompt is in the Release notes.*
+
 
 ## 验证边界（不吹的部分）/ Verified — and honestly not
 
