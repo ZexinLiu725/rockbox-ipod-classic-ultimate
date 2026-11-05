@@ -1,5 +1,18 @@
 # 更新日志 / Changelog
 
+## [BUGFIX 版] — 2026-11-05
+
+版本 / Version: `66f3075f9eM-261105`（同完全体基线，Release: `v261105-bugfix`）
+
+### 修复 / Fixed
+- iPod 6G 主菜单隐藏录音入口 / Recording entry removed from the iPod 6G main menu
+- 主页皮肤（SBS）改全屏白底并去掉主页歌曲信息条，修复页面重叠与残留 / Home skin (SBS): full-screen white background, song-info strip removed — fixes overlapping and ghosted home-screen content
+- 音频内存耗尽不再 PANIC 死机，改为停播并提示 `Audio memory exhausted` / Audio-memory exhaustion no longer panics; playback stops with an `Audio memory exhausted` message
+
+### 发布包 / Packaging
+- 公开包字体为思源黑体（Noto Sans CJK，OFL 授权）按原尺寸重制，与作者本机自用版字形略有不同 / Public-package fonts rebuilt from Noto Sans CJK (OFL) at the original metrics
+- LanaPixel 像素字体因授权未明未收录，用到它的像素主题菜单回退默认字体 / LanaPixel excluded (license unclear); pixel themes fall back to the default font for menus
+
 ## [A2+ALAC+B 完全体] — 2026-11-05
 
 版本 / Version: `66f3075f9eM-261105`（iPod Classic 6G / ipod6g, 64 MB）

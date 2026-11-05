@@ -8,7 +8,7 @@
 A custom Rockbox build for the iPod Classic 6G (ipod6g, 64 MB). It fixes what stock Rockbox actually gets wrong: ALAC decoding errors, a poor sample-rate converter, and a handful of DSP and playback bugs. Every claim below is backed by measured numbers.
 
 - 版本 / Version: `66f3075f9eM-261105`（A2 + ALAC + B 整合版 / integrated build）
-- 发布包 / Release: `rockbox-ipod6g-A2-ALAC-B.zip`（9,258,598 字节，433 条目，44 codecs），在 Releases 里下载 / download from Releases
+- 发布包 / Release: `rockbox-ipod6g-A2-ALAC-B-BUGFIX.zip`（73,394,046 字节，583 条目，44 codecs），在 Releases 里下载（当前版本 v261105-bugfix）/ download from Releases (current: v261105-bugfix)
 - 许可 / License: GPL-2.0（继承自 Rockbox 上游 / inherited from upstream Rockbox）
 - 状态 / Status: 作者已于 2026-11-05 真机装机，装后逐项核验通过，日常使用中 / Installed on the author's own iPod on 2026-11-05, verified file by file, in daily use.
 
@@ -69,6 +69,18 @@ Hi-res files must be downsampled to the iPod's 44.1/48 kHz output. The stock Her
 
 This build runs on the author's own iPod, in daily use, installed and verified file by file with personal settings untouched. To the author's ears it sounds clearly better than the stock Apple firmware, especially the detail and soundstage on lossless files. Install it and judge for yourself.
 
+### 补记：BUGFIX 版（2026-11-05 同日小修）/ Bugfix update (same day)
+
+完全体发布当天又收了三个小毛病，现在的下载版就是修好的版本，版本号没变（还是 `66f3075f9eM-261105`），认准 Release 名 `v261105-bugfix` 就行：
+
+- **主菜单去掉录音入口**：iPod 6G 主菜单里不再显示录音，少一个用不上的入口 / The recording entry is gone from the 6G main menu.
+- **主页不再重叠**：主页皮肤（SBS）改成全屏白底，并去掉了主页上的歌曲信息条，之前页面重叠、残留的毛病没了 / The home skin (SBS) now uses a full-screen white background and drops the song-info strip, fixing the overlapping / ghosted home screen.
+- **内存不足不再死机**：播放时音频内存耗尽，原版会直接 PANIC 死机；现在改为停播并提示 `Audio memory exhausted`，机器还活着 / If audio memory runs out during playback, it no longer panics — playback stops with an `Audio memory exhausted` message instead.
+
+还有一句字体的话：公开包里的字体是用思源黑体（Noto Sans CJK，OFL 开源授权）按原尺寸重新做的，和作者本机自用的那套字形略有不同，大小和间距一致，不影响使用。LanaPixel 像素字体因为授权没写清，这次没有收录；用到它的几个像素主题，菜单字体会回退成默认字体，其余一切正常。
+
+The public package's fonts are rebuilt from Noto Sans CJK (OFL) at the original sizes — glyphs differ slightly from the author's own set, with identical metrics. The LanaPixel pixel font is not included (its license is unclear); pixel themes that referenced it fall back to the default font for menus.
+
 ## 强烈推荐：导入音源最高只到 48 kHz / Feed it nothing above 48 kHz
 
 真机实测（2026-11-05）：48 kHz 流畅；96 kHz 每几秒卡一次；192 kHz 卡成缓冲中的视频，声音和电平条一起顿。
@@ -92,7 +104,7 @@ You need: a computer, a USB cable, and an iPod Classic 6G already running Rockbo
 Copy the whole hidden .rockbox folder to your computer. This backup is your undo button.
 
 第 2 步：解压
-解压 Release 里的 rockbox-ipod6g-A2-ALAC-B.zip，里面只有一个 .rockbox 文件夹，对了。
+解压 Release 里的 rockbox-ipod6g-A2-ALAC-B-BUGFIX.zip，里面只有一个 .rockbox 文件夹，对了。
 Unzip the release ZIP. Inside is a single .rockbox folder.
 
 第 3 步：合并，别替换
@@ -113,16 +125,22 @@ Send this prompt to Codex (or any AI agent that can operate your computer):
 
 ```text
 请帮我把一个 Rockbox 定制固件包装到我的 iPod Classic 6G 上，严格按下面做：
-1. 固件包在 GitHub 仓库 liuzexin725-maker/rockbox-ipod-classic-ultimate 的 Release v261105-ultimate 里，文件名 rockbox-ipod6g-A2-ALAC-B.zip，先下载并解压，确认里面只有一个 .rockbox 文件夹、大小 9,258,598 字节。
+1. 固件包在 GitHub 仓库 ZexinLiu725/rockbox-ipod-classic-ultimate 的 Release v261105-bugfix 里，文件名 rockbox-ipod6g-A2-ALAC-B-BUGFIX.zip，先下载并解压，确认里面只有一个 .rockbox 文件夹、大小 73,394,046 字节。
 2. 把 iPod 插上电脑，先把 iPod 里现有的整个 .rockbox 文件夹完整复制一份到电脑上做备份，并打开备份确认 rockbox.ipod 和 codecs 都在；备份没确认好之前，不要往 iPod 写任何东西。
 3. 把解压出的 .rockbox 以「合并」方式拷到 iPod 根目录，绝对不要整目录替换；如果遇到同名文件，默认保留我设备上的个人设置文件 config.cfg（安装包本来就不含它）。
-4. 拷完逐项核对：.rockbox/rockbox.ipod 应为 1,218,340 字节，.rockbox/codecs 里应有 44 个 .codec 文件。
+4. 拷完逐项核对：.rockbox/rockbox.ipod 应为 1,218,324 字节，.rockbox/codecs 里应有 44 个 .codec 文件。
 5. 安全弹出后让我拔线开机，进 Rockbox Info 确认版本是 66f3075f9eM-261105。
 6. 任何一步对不上立刻停下来告诉我，不要自行尝试修复，更不要动引导程序（bootloader）。
 装好之后提醒我：导入这台 iPod 的歌曲采样率最高只到 48 kHz，96/192 的歌先在电脑上转成 48 再导入，不然会卡。
 ```
 
 英文版提示词在 Release 详情里。The English prompt is in the Release notes.
+
+## 配套工具 / Companion tool
+
+歌从哪来？推荐配 [Music Bridge](https://github.com/ZexinLiu725/music-bridge) 一起用：粘贴一个网易云歌单链接，它自动去 Apple Music 匹配无损（最高 48 kHz，正好是这台机器的直通区间），下载完单层平铺、按顺序编号导入 iPod。这版固件负责把歌放好，Music Bridge 负责把歌送进来。
+
+Pair it with [Music Bridge](https://github.com/ZexinLiu725/music-bridge): paste a NetEase playlist link and it matches Apple Music lossless (capped at 48 kHz — this machine's pass-through sweet spot), then imports flat, in playlist order, into the iPod.
 
 ## 致谢 / Credits
 
