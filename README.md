@@ -14,6 +14,32 @@ A custom Rockbox build for the iPod Classic 6G (ipod6g, 64 MB). It fixes what st
 
 ---
 
+## 先扫个盲：Rockbox 是什么，为什么要装 / New here? What Rockbox is, and why
+
+Rockbox 是一套免费的开源系统，专门给老 MP3 播放器换上用的，2001 年就有人开始写，到现在二十多年了。你可以把它理解成给播放器换了个「大脑」：机器还是那台机器，但开机进去之后，界面、功能、能放的歌，全都换了一套。它不是苹果官方的东西，是全世界一群爱好者自己维护的，支持 iPod、闪迪、三星等很多老机型。
+
+为什么好端端的要换系统？因为 iPod 的原厂系统限制太多：
+
+- 传歌必须用 iTunes 同步，自己拖进去的文件它不认；
+- 格式挑食，FLAC 这类常见的无损格式根本放不了；
+- 均衡器只有几个固定预设，没法细调；
+- 界面是十几年前的样子，主题、字体都换不了。
+
+换上 Rockbox 之后，这些限制基本都没了：
+
+- iPod 插上电脑就是个 U 盘，歌直接拖进去，打开就能播，不用再开 iTunes；
+- 格式几乎全支持，MP3、FLAC、ALAC、APE、WAV、OGG 都能放，无损终于能无损地听；
+- 有多段均衡器可以细调，还有无缝播放（现场专辑、古典乐曲目之间不断）、ReplayGain 音量平衡这些原厂没有的功能；
+- 主题、字体、界面都能换，还能显示歌词。
+
+那这一版和官方 Rockbox 又有什么区别？官方 Rockbox 救活了很多老机器，但它在 iPod Classic 上的音频部分有实打实的毛病：无损解码解错数、采样率转换质量差。这些问题藏了很多年，下一节就是这一版把它们一个个修掉的记录。
+
+Rockbox is a free, open-source replacement firmware for older MP3 players, in development since 2001. Think of it as a new brain for the same hardware: the device stays, but the interface, features and supported formats are all replaced. It is a community project, not an Apple product, and it supports many classic players from iPod, SanDisk, Samsung and others.
+
+Why bother? The stock iPod firmware is restrictive: music must go through iTunes sync (files you drag in yourself are ignored), formats are limited (no FLAC), the EQ is a few fixed presets, and the interface has been frozen for over a decade. With Rockbox, the iPod mounts as a plain USB drive — drag files in and play them. Nearly every format works (MP3, FLAC, ALAC, APE, WAV, OGG), there is a proper multi-band EQ, gapless playback, ReplayGain, lyrics display, and themes and fonts you can actually change.
+
+So why this build, on top of Rockbox? Stock Rockbox revived these machines, but on the iPod Classic its audio path has real, long-standing bugs: the lossless decoder gets samples wrong, and the sample-rate converter is poor. The next section is the record of fixing them, one by one.
+
 ## 这一版改了什么 / What this build changes
 
 ### 1. ALAC：原版解错了三千八百多万个采样点，这版全对上了 / Bit-exact ALAC
