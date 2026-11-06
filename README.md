@@ -1,5 +1,7 @@
 # ROCKBOX ULTIMATE — iPod Classic 完全体
 
+<p align="center"><strong>简体中文</strong> · <a href="README.en.md">English</a></p>
+
 **二十年前的机器，不该用二十年前的妥协听歌。**
 **A 20-year-old legend deserves better than 20-year-old compromises.**
 
