@@ -1,0 +1,12 @@
+--- a/firmware/target/arm/s5l8702/ipod6g/storage_ata-6g.c
++++ b/firmware/target/arm/s5l8702/ipod6g/storage_ata-6g.c
+@@ -1125,6 +1125,9 @@
+                 yield();
+             PWRCON(0) |= (1 << 5);
+         }
++    } else if (canflush) {
++        /* Allow the storage device to finish programming cached data. */
++        sleep(HZ / 2);
+     }
+ 
+     if (ceata || ata_disk_can_sleep() || canflush)
