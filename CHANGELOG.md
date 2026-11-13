@@ -1,5 +1,23 @@
 # 更新日志 / Changelog
 
+## [稳定性更新] — 2026-11-13
+
+版本 / Version: `66f3075f9eM-261113`（Release: `v261113-ultimate`）
+
+### 修复 / Fixed
+- 图片查看器与皮肤引擎各一处除零崩溃，加守卫 / Divide-by-zero guards added in the JPEG viewer and the skin engine
+- 两处内存不足路径改为软着陆，不再硬崩溃 / Two out-of-memory paths now fail soft instead of crashing
+- 数据库标记契约加固 / Database marker contract hardened
+- 合入上游第二、三批更新（基线仍为上游 master 66f3075f9e） / Upstream batch 2 and 3 merged (baseline still upstream master 66f3075f9e)
+
+### 真机结论 / Real-device findings
+- 作者已于 2026-11-13 装机（主程序 1,226,276 字节），日常使用中 / Installed on the author's own iPod on 2026-11-13 (main binary 1,226,276 bytes), in daily use
+
+### 发布包 / Packaging
+- 包构成与首发完全体一致：433 条目、44 codecs、自带 2 个 Helvetica 字体 / Same composition as the original ultimate package: 433 entries, 44 codecs, the 2 bundled Helvetica fonts
+- 需要全套中文字体：从 v261105-bugfix 包中把 .rockbox/fonts 文件夹拷入合并即可 / For the full CJK font set, merge in the .rockbox/fonts folder from the v261105-bugfix package
+
+
 ## [BUGFIX 版] — 2026-11-05
 
 版本 / Version: `66f3075f9eM-261105`（同完全体基线，Release: `v261105-bugfix`）

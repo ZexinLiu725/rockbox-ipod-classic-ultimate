@@ -9,10 +9,10 @@
 
 A custom Rockbox build for the iPod Classic 6G (ipod6g, 64 MB). It fixes what stock Rockbox actually gets wrong: ALAC decoding errors, a poor sample-rate converter, and a handful of DSP and playback bugs. Every claim below is backed by measured numbers.
 
-- 版本 / Version: `66f3075f9eM-261105`（A2 + ALAC + B 整合版 / integrated build）
-- 发布包 / Release: `rockbox-ipod6g-A2-ALAC-B-BUGFIX.zip`（73,394,046 字节，583 条目，44 codecs），在 Releases 里下载（当前版本 v261105-bugfix）/ download from Releases (current: v261105-bugfix)
+- 版本 / Version: `66f3075f9eM-261113`（A2 + ALAC + B 整合＋稳定性更新 / integrated build + stability update）
+- 发布包 / Release: `rockbox-ipod6g-A2-ALAC-B-261113.zip`（9,261,810 字节，433 条目，44 codecs），在 Releases 里下载（当前版本 v261113-ultimate）/ download from Releases (current: v261113-ultimate)
 - 许可 / License: GPL-2.0（继承自 Rockbox 上游 / inherited from upstream Rockbox）
-- 状态 / Status: 作者已于 2026-11-05 真机装机，装后逐项核验通过，日常使用中 / Installed on the author's own iPod on 2026-11-05, verified file by file, in daily use.
+- 状态 / Status: 作者已于 2026-11-13 真机装机，装后逐项核验通过，日常使用中 / Installed on the author's own iPod on 2026-11-13, verified file by file, in daily use.
 
 ---
 
@@ -82,6 +82,12 @@ This build runs on the author's own iPod, in daily use, installed and verified f
 还有一句字体的话：公开包里的字体是用思源黑体（Noto Sans CJK，OFL 开源授权）按原尺寸重新做的，和作者本机自用的那套字形略有不同，大小和间距一致，不影响使用。LanaPixel 像素字体因为授权没写清，这次没有收录；用到它的几个像素主题，菜单字体会回退成默认字体，其余一切正常。
 
 The public package's fonts are rebuilt from Noto Sans CJK (OFL) at the original sizes — glyphs differ slightly from the author's own set, with identical metrics. The LanaPixel pixel font is not included (its license is unclear); pixel themes that referenced it fall back to the default font for menus.
+### 补记：稳定性更新（2026-11-13）/ Stability update
+
+版本号升到 `66f3075f9eM-261113`，认准 Release 名 `v261113-ultimate`。这版没有新功能，收的是几个稳定性口子：图片查看器与皮肤引擎各一处除零崩溃、两处内存不足时的硬崩溃、数据库标记契约，另外合入了上游后续两批更新。作者本机已装机，日常使用中。包的构成与首发完全体一致（自带 2 个 Helvetica 字体）；需要全套中文字体的，从 v261105-bugfix 包里把 .rockbox/fonts 文件夹拷过来合并即可。
+
+The version string moves to `66f3075f9eM-261113`; look for the release named `v261113-ultimate`. No new features — this one closes stability holes: a divide-by-zero each in the JPEG viewer and the skin engine, two hard crashes on out-of-memory, and the database marker contract, plus upstream batches 2 and 3 merged in. It runs on the author's own iPod in daily use. Package composition matches the original ultimate package (2 bundled Helvetica fonts); for the full CJK font set, merge in the .rockbox/fonts folder from the v261105-bugfix package.
+
 
 ## 强烈推荐：导入音源最高只到 48 kHz / Feed it nothing above 48 kHz
 
@@ -106,7 +112,7 @@ You need: a computer, a USB cable, and an iPod Classic 6G already running Rockbo
 Copy the whole hidden .rockbox folder to your computer. This backup is your undo button.
 
 第 2 步：解压
-解压 Release 里的 rockbox-ipod6g-A2-ALAC-B-BUGFIX.zip，里面只有一个 .rockbox 文件夹，对了。
+解压 Release 里的 rockbox-ipod6g-A2-ALAC-B-261113.zip，里面只有一个 .rockbox 文件夹，对了。
 Unzip the release ZIP. Inside is a single .rockbox folder.
 
 第 3 步：合并，别替换
@@ -114,7 +120,7 @@ Unzip the release ZIP. Inside is a single .rockbox folder.
 Drag the unzipped .rockbox onto the iPod root and choose Merge — never Replace. The package contains no config.cfg, so your themes and settings stay.
 
 第 4 步：弹出、开机、核对
-安全弹出，拔线开机，进 Rockbox Info 看到版本号 66f3075f9eM-261105 就是装好了。放一首 44.1/48 kHz 的歌，能播、能暂停、能拖进度，齐活。
+安全弹出，拔线开机，进 Rockbox Info 看到版本号 66f3075f9eM-261113 就是装好了。放一首 44.1/48 kHz 的歌，能播、能暂停、能拖进度，齐活。
 Eject safely, boot, and confirm version 66f3075f9eM-261105 in Rockbox Info.
 
 想退回去？把第 1 步备份的 .rockbox 再拖回来合并一次，就回到原来的系统。
@@ -127,11 +133,11 @@ Send this prompt to Codex (or any AI agent that can operate your computer):
 
 ```text
 请帮我把一个 Rockbox 定制固件包装到我的 iPod Classic 6G 上，严格按下面做：
-1. 固件包在 GitHub 仓库 ZexinLiu725/rockbox-ipod-classic-ultimate 的 Release v261105-bugfix 里，文件名 rockbox-ipod6g-A2-ALAC-B-BUGFIX.zip，先下载并解压，确认里面只有一个 .rockbox 文件夹、大小 73,394,046 字节。
+1. 固件包在 GitHub 仓库 ZexinLiu725/rockbox-ipod-classic-ultimate 的 Release v261113-ultimate 里，文件名 rockbox-ipod6g-A2-ALAC-B-261113.zip，先下载并解压，确认里面只有一个 .rockbox 文件夹、大小 9,261,810 字节。
 2. 把 iPod 插上电脑，先把 iPod 里现有的整个 .rockbox 文件夹完整复制一份到电脑上做备份，并打开备份确认 rockbox.ipod 和 codecs 都在；备份没确认好之前，不要往 iPod 写任何东西。
 3. 把解压出的 .rockbox 以「合并」方式拷到 iPod 根目录，绝对不要整目录替换；如果遇到同名文件，默认保留我设备上的个人设置文件 config.cfg（安装包本来就不含它）。
-4. 拷完逐项核对：.rockbox/rockbox.ipod 应为 1,218,324 字节，.rockbox/codecs 里应有 44 个 .codec 文件。
-5. 安全弹出后让我拔线开机，进 Rockbox Info 确认版本是 66f3075f9eM-261105。
+4. 拷完逐项核对：.rockbox/rockbox.ipod 应为 1,226,276 字节，.rockbox/codecs 里应有 44 个 .codec 文件。
+5. 安全弹出后让我拔线开机，进 Rockbox Info 确认版本是 66f3075f9eM-261113。
 6. 任何一步对不上立刻停下来告诉我，不要自行尝试修复，更不要动引导程序（bootloader）。
 装好之后提醒我：导入这台 iPod 的歌曲采样率最高只到 48 kHz，96/192 的歌先在电脑上转成 48 再导入，不然会卡。
 ```

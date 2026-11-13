@@ -6,10 +6,10 @@
 
 A custom Rockbox build for the iPod Classic 6G (ipod6g, 64 MB). It fixes what stock Rockbox actually gets wrong: ALAC decoding errors, a poor sample-rate converter, and a handful of DSP and playback bugs. Every claim below is backed by measured numbers.
 
-- Version: `66f3075f9eM-261105` (A2 + ALAC + B integrated build)
-- Release package: `rockbox-ipod6g-A2-ALAC-B-BUGFIX.zip` (73,394,046 bytes, 583 entries, 44 codecs), download from Releases (current: v261105-bugfix)
+- Version: `66f3075f9eM-261113` (A2 + ALAC + B integrated build + stability update)
+- Release package: `rockbox-ipod6g-A2-ALAC-B-261113.zip` (9,261,810 bytes, 433 entries, 44 codecs), download from Releases (current: v261113-ultimate)
 - License: GPL-2.0 (inherited from upstream Rockbox)
-- Status: Installed on the author's own iPod on 2026-11-05, verified file by file, in daily use.
+- Status: Installed on the author's own iPod on 2026-11-13, verified file by file, in daily use.
 
 ---
 
@@ -51,6 +51,10 @@ Three small bugs were caught on launch day. The current download is the fixed bu
 - **Out of memory no longer crashes**: if audio memory runs out during playback, it no longer panics — playback stops with an `Audio memory exhausted` message instead.
 
 One word on fonts: the public package's fonts are rebuilt from Noto Sans CJK (OFL) at the original sizes — glyphs differ slightly from the author's own set, with identical metrics. The LanaPixel pixel font is not included (its license is unclear); pixel themes that referenced it fall back to the default font for menus, everything else works as before.
+### Stability update (2026-11-13)
+
+The version string moves to `66f3075f9eM-261113`; look for the release named `v261113-ultimate`. No new features — this one closes stability holes: a divide-by-zero each in the JPEG viewer and the skin engine, two hard crashes on out-of-memory, and the database marker contract, plus upstream batches 2 and 3 merged in. It runs on the author's own iPod in daily use. Package composition matches the original ultimate package (2 bundled Helvetica fonts); for the full CJK font set, merge in the .rockbox/fonts folder from the v261105-bugfix package.
+
 
 ## Feed it nothing above 48 kHz
 
@@ -68,11 +72,11 @@ You need: a computer (Mac or Windows), a USB cable, and an iPod Classic 6G alrea
 
 **Step 1 — Back up (do not skip).** Plug the iPod in; it mounts like a USB drive. Copy the whole `.rockbox` folder to your computer. It is hidden: on Mac press Cmd+Shift+. in Finder to reveal it; on Windows enable "Hidden items" in Explorer. This backup is your undo button.
 
-**Step 2 — Unzip.** Unzip `rockbox-ipod6g-A2-ALAC-B-BUGFIX.zip` from the Release. Inside is a single `.rockbox` folder.
+**Step 2 — Unzip.** Unzip `rockbox-ipod6g-A2-ALAC-B-261113.zip` from the Release. Inside is a single `.rockbox` folder.
 
 **Step 3 — Merge, never Replace.** Drag the unzipped `.rockbox` onto the iPod's root (the level where you see the Music folder). When the system asks, choose **Merge** — never Replace. The package contains no config.cfg, so your themes, playlists and settings stay.
 
-**Step 4 — Eject, boot, verify.** Eject safely, unplug, boot, and confirm version `66f3075f9eM-261105` in Rockbox Info. Play a 44.1/48 kHz song — play, pause and seek all working means you are done.
+**Step 4 — Eject, boot, verify.** Eject safely, unplug, boot, and confirm version `66f3075f9eM-261113` in Rockbox Info. Play a 44.1/48 kHz song — play, pause and seek all working means you are done.
 
 Rollback: merge your backup `.rockbox` back the same way.
 
@@ -82,11 +86,11 @@ Send this prompt to Codex (or any AI agent that can operate your computer):
 
 ```text
 Please install a custom Rockbox firmware package on my iPod Classic 6G, following these steps exactly:
-1. The package is in the GitHub repo ZexinLiu725/rockbox-ipod-classic-ultimate, Release v261105-bugfix, file name rockbox-ipod6g-A2-ALAC-B-BUGFIX.zip. Download and unzip it, and confirm it contains a single .rockbox folder and is 73,394,046 bytes.
+1. The package is in the GitHub repo ZexinLiu725/rockbox-ipod-classic-ultimate, Release v261113-ultimate, file name rockbox-ipod6g-A2-ALAC-B-261113.zip. Download and unzip it, and confirm it contains a single .rockbox folder and is 9,261,810 bytes.
 2. Plug in my iPod and first copy its entire existing .rockbox folder to my computer as a backup. Open the backup and confirm rockbox.ipod and the codecs are inside. Do not write anything to the iPod until the backup is confirmed.
 3. Copy the unzipped .rockbox to the iPod root using Merge — never replace the whole folder. If a file conflict involves my personal config.cfg, keep the one on my device (the package does not contain one anyway).
-4. Verify afterwards: .rockbox/rockbox.ipod must be 1,218,324 bytes, and .rockbox/codecs must contain 44 .codec files.
-5. Eject safely, let me unplug and boot, and confirm the version in Rockbox Info is 66f3075f9eM-261105.
+4. Verify afterwards: .rockbox/rockbox.ipod must be 1,226,276 bytes, and .rockbox/codecs must contain 44 .codec files.
+5. Eject safely, let me unplug and boot, and confirm the version in Rockbox Info is 66f3075f9eM-261113.
 6. If anything does not match, stop and tell me immediately. Do not attempt repairs on your own, and never touch the bootloader.
 When it is installed, remind me: songs imported to this iPod should be at most 48 kHz — convert 96/192 kHz files to 48 on the computer first, or they will stutter.
 ```
